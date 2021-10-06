@@ -1,0 +1,36 @@
+{% load static wagtailcore_tags  wagtailimages_tags %}
+
+<section class="blog-posts">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-10 is-offset-1">
+        <div class="columns featured-post is-multiline">
+          <div class="column is-12 post">
+
+            <article>
+              <h1 class="title post-title">{{ post.title }}</h1>
+              
+              {% if post.date %}
+                <div class="meta date">
+                    {{ post.date|date:"F, Y" }}
+                </div>
+              {% endif %}
+
+              <center>{% image post.header_image original %}</center>
+
+              <br>
+              <div class="post-body" style="color: white">
+                {% include_block post.body  %}
+              </div>
+            </article>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    
+
+
+

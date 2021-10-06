@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+
+  <section class="blog-posts">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-10 is-offset-1">
+
+          {% if posts %}
+            {% for post in posts %}
+              {{post.tags}}
+              <div class="columns featured-post is-multiline">
+                <div class="column is-12 post">
+                  <article class="columns featured">
+                    <div class="column is-7 post-img ">
+                        {% if post.header_image %}
+                          {% image post.header_image original %}
+                        {% else %}
+                          <img src="https://cdn.emk.dev/templates/featured-image.png" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="column is-5 featured-content va">
+                        <div>
+                            <h3 class="heading post-category">Category Name</h3>
+                            <h1 class="title post-title">{{ post.title }}</h1>
+                            <p class="post-excerpt">Short description</p>
+                            <br>
+                            <a href="{{ post.url }}" class="button is-primary">Read More</a>
+                        </div>
+
+                    </div>
+                  </article>
+                </div>
+              </div>
+    
+              <hr>
+            {% endfor %}
+
+
+                <!-- <ul class="pager">
+                {% if blogs.has_next %}
+                  <li class="previous"><a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">&larr; Older</a></li>
+                {% endif %}
+                {% if blogs.has_previous %}
+                  <li class="next"><a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Newer &rarr;</a></li>
+                {% endif %}
+                </ul> -->
+
+          {% else %}
+            <p>There are currently no blog posts</p>
+          {% endif %} 
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+    <!-- {% if category %}
+      <h2>{{ category }}</h2>
+    {% endif %}
+
+    {% if tag %}
+    <h2>Posts tagged with '{{ tag }}'</h2>
+    {% endif %}
+
+    {% for rl in self.related_links.all %}
+        <p>{{ rl.title }}: <a href='{{ rl.link_page.url }}'>{{ rl.link_page }}</a></p>
+    {% endfor %} -->
+
+       
+    
+{% endblock %}

@@ -1,0 +1,6 @@
+.venv/
+db.sqlite3
+tmp/
+mysite/media/*
+mysite/db.sqlite3*
+__pycache__
